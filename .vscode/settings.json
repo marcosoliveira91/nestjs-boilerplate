@@ -1,0 +1,12 @@
+{
+    "eslint.validate": [
+        "javascript",
+        "typescript",
+    ],
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "always",
+    },
+}

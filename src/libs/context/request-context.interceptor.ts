@@ -1,14 +1,13 @@
-import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
 import { nanoid } from 'nanoid';
+import { Observable } from 'rxjs';
 import { RequestContextService } from "./request-context.service";
 
 /**
  * @see https://docs.nestjs.com/interceptors
  */
 @Injectable()
-export class ContextInterceptor implements NestInterceptor {
+export class RequestContextInterceptor implements NestInterceptor {
 
   /**
    * Intercepts the incoming request to set a unique ID in the global context.

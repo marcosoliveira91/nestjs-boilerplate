@@ -1,21 +1,30 @@
-import { Module } from '@nestjs/common';
-import { RequestContextModule } from 'nestjs-request-context';
-import { TypeOrmModule as DatabaseModule } from '@nestjs/typeorm';
-import { ContextInterceptor } from '@libs/context/context-interceptor';
-import { APP_INTERCEPTOR } from '@nestjs/core';
 import { dbConfig } from '@configs/db.configs';
+import { RequestContextInterceptor } from '@libs/context/request-context.interceptor';
+import { ExceptionInterceptor } from '@libs/interceptors/exception.interceptor';
+import { Module } from '@nestjs/common';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { CqrsModule } from '@nestjs/cqrs';
+import { EventEmitterModule } from '@nestjs/event-emitter';
+import { TypeOrmModule as DatabaseModule } from '@nestjs/typeorm';
+import { RequestContextModule } from 'nestjs-request-context';
 
 const interceptors = [
   {
     provide: APP_INTERCEPTOR,
-    useClass: ContextInterceptor,
+    useClass: RequestContextInterceptor,
+  },
+  {
+    provide: APP_INTERCEPTOR,
+    useClass: ExceptionInterceptor,
   },
 ];
 
 @Module({
   imports: [
-    RequestContextModule,
     DatabaseModule.forRoot(dbConfig),
+    RequestContextModule,
+    EventEmitterModule.forRoot(),
+    CqrsModule,
   ],
   controllers: [],
   providers: [...interceptors],

@@ -1,5 +1,5 @@
 import { RequestContext } from 'nestjs-request-context';
-import { EntityManager as DatabaseTransactionConnection } from 'typeorm';
+import { QueryRunner as DatabaseTransactionConnection } from 'typeorm';
 
 
 /**

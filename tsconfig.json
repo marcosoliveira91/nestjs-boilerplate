@@ -19,9 +19,6 @@
     // "forceConsistentCasingInFileNames": false,
     // "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@src/*": [
-        "src/*"
-      ],
       "@modules/*": [
         "src/modules/*"
       ],
@@ -33,7 +30,7 @@
       ],
       "@test/*": [
         "test/*"
-      ]
+      ],
     }
   }
 }

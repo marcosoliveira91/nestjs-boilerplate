@@ -1,5 +1,5 @@
 import { RequestContext } from 'nestjs-request-context';
-import { QueryRunner as DatabaseTransactionConnection } from 'typeorm';
+import { DataSource as DatabaseTransactionConnection } from 'typeorm';
 
 
 /**

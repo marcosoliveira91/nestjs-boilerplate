@@ -1,12 +1,14 @@
+import '@libs/utils/dotenv';
+
 import { z } from 'zod';
 
 export const EnvironmentSchema = z.object({
     PORT: z.coerce.number().positive().optional().default(3000),
-    DB_HOST: z.string(),
-    DB_PORT: z.number().positive(),
-    DB_USERNAME: z.string(),
-    DB_PASSWORD: z.string(),
-    DB_NAME: z.string(),
+    MYSQL_DB_HOST: z.string(),
+    MYSQL_DB_PORT: z.coerce.number().positive(),
+    MYSQL_DB_USERNAME: z.string(),
+    MYSQL_DB_PASSWORD: z.string(),
+    MYSQL_DB_NAME: z.string(),
 });
 
 export const config = EnvironmentSchema.parse(process.env);

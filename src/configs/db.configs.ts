@@ -1,13 +1,15 @@
+import '@libs/utils/dotenv';
+
 import { DataSourceOptions } from "typeorm";
 import { config } from "./env.configs";
 
 export const dbConfig: DataSourceOptions = {
     type: 'mysql',
-    host: config.DB_HOST,
-    port: config.DB_PORT,
-    username: config.DB_USERNAME,
-    password: config.DB_PASSWORD,
-    database: config.DB_NAME,
+    host: config.MYSQL_DB_HOST,
+    port: config.MYSQL_DB_PORT,
+    username: config.MYSQL_DB_USERNAME,
+    password: config.MYSQL_DB_PASSWORD,
+    database: config.MYSQL_DB_NAME,
     // entities: [UserModel],
     entities: [
         __dirname + '/../modules/**/infra/*.model{.ts}',

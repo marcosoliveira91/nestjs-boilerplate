@@ -8,24 +8,35 @@ import { DataSource } from 'typeorm';
  * for read and write connections (for better performance and scalability).
  * 
  * Example: 
- *      const writeDataSource = new DataSource({ ... });
- *      const readDataSource = new DataSource({ ... });
+       export const READ_CONNECTION = Symbol('READ_CONNECTION');
+       export const WRITE_CONNECTION = Symbol('WRITE_CONNECTION');
+       const writeDataSource = new DataSource({ ... });
+       const readDataSource = new DataSource({ ... });
+       export const databaseProviders = [
+            {
+                provide: WRITE_CONNECTION,
+                useFactory: async () => {
+                    await dataSource.initialize();
+                    return dataSource.createQueryRunner();
+                },
+            },
+            {
+                provide: READ_CONNECTION,
+                useFactory: async () => {
+                    await dataSource.initialize();
+                    return dataSource.manager;
+                },
+            },
+        ];
  */
+
 const dataSource = new DataSource(dbConfig);
-export const READ_CONNECTION = Symbol('READ_CONNECTION');
-export const WRITE_CONNECTION = Symbol('WRITE_CONNECTION');
+export const DB_CONNECTION = Symbol('DB_CONNECTION');
 
 
 export const databaseProviders = [
     {
-        provide: WRITE_CONNECTION,
-        useFactory: async () => {
-            await dataSource.initialize();
-            return dataSource.createQueryRunner();
-        },
-    },
-    {
-        provide: READ_CONNECTION,
+        provide: DB_CONNECTION,
         useFactory: async () => {
             await dataSource.initialize();
             return dataSource.manager;
@@ -37,7 +48,7 @@ export const databaseProviders = [
 @Global()
 @Module({
     providers: [...databaseProviders],
-    exports: [WRITE_CONNECTION, READ_CONNECTION],
+    exports: [DB_CONNECTION],
 })
 export class DatabaseModule implements OnModuleInit, OnModuleDestroy {
     async onModuleInit(): Promise<void> {

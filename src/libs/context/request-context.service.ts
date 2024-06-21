@@ -1,5 +1,5 @@
 import { RequestContext } from 'nestjs-request-context';
-import { DataSource as DatabaseTransactionConnection } from 'typeorm';
+import { EntityManager as TransactionalConnection } from 'typeorm';
 
 
 /**
@@ -7,7 +7,7 @@ import { DataSource as DatabaseTransactionConnection } from 'typeorm';
  */
 export class AppRequestContext extends RequestContext {
     requestId: string;
-    transactionConnection?: DatabaseTransactionConnection;
+    transactionalConnection?: TransactionalConnection;
 }
 
 export class RequestContextService {
@@ -24,20 +24,20 @@ export class RequestContextService {
         return this.getContext().requestId;
     }
 
-    static getTransactionConnection(): DatabaseTransactionConnection | undefined {
+    static getTransactionalConnection(): TransactionalConnection | undefined {
         const ctx = this.getContext();
-        return ctx.transactionConnection;
+        return ctx.transactionalConnection;
     }
 
-    static setTransactionConnection(
-        transactionConnection?: DatabaseTransactionConnection,
+    static setTransactionalConnection(
+        transactionConnection?: TransactionalConnection,
     ): void {
         const ctx = this.getContext();
-        ctx.transactionConnection = transactionConnection;
+        ctx.transactionalConnection = transactionConnection;
     }
 
-    static cleanTransactionConnection(): void {
+    static cleanTransactionalConnection(): void {
         const ctx = this.getContext();
-        ctx.transactionConnection = undefined;
+        ctx.transactionalConnection = undefined;
     }
 }

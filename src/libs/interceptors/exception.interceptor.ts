@@ -1,17 +1,17 @@
 import {
-    Injectable,
-    NestInterceptor,
-    ExecutionContext,
-    CallHandler,
-    Logger,
     BadRequestException,
+    CallHandler,
+    ExecutionContext,
+    Injectable,
+    Logger,
+    NestInterceptor,
 } from '@nestjs/common';
 
-import { ExceptionBase } from '@libs/exceptions';
+import { ErrorResponse } from '@libs/api/error.response.dto';
 import { RequestContextService } from '@libs/context/request-context.service';
+import { ExceptionBase } from '@libs/exceptions';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ErrorResponse } from '@src/libs/api/error.response.dto';
 
 @Injectable()
 export class ExceptionInterceptor implements NestInterceptor {

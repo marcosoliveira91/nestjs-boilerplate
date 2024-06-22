@@ -1,8 +1,8 @@
 import { Mapper } from '@libs/ddd';
+import { UserModel } from '@modules/user/database/user.model';
 import { UserEntity } from '@modules/user/domain/user.entity';
 import { Email } from '@modules/user/domain/value-objects/email.value-object';
 import { UserResponseDto } from '@modules/user/dtos/user.response.dto';
-import { UserModel } from '@modules/user/infra/user.model';
 import { Injectable } from '@nestjs/common';
 
 

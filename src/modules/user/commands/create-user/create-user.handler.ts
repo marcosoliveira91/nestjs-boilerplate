@@ -11,7 +11,7 @@ import { USER_REPOSITORY } from '../../user.di-tokens';
 import { CreateUserCommand } from './create-user.command';
 
 @CommandHandler(CreateUserCommand)
-export class CreateUserService implements ICommandHandler {
+export class CreateUserHandler implements ICommandHandler {
     constructor(
         @Inject(USER_REPOSITORY) protected readonly userRepo: UserRepositoryPort,
     ) { }

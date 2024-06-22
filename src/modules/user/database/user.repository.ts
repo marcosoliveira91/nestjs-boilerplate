@@ -1,12 +1,12 @@
 import { DB_CONNECTION } from '@libs/db/database.module';
 import { SqlRepositoryBase } from '@libs/db/sql-repository.base';
-import { UserRepositoryPort } from '@modules/user/domain/user.repository.port';
-import { UserModel } from '@modules/user/infra/user.model';
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { EntityManager } from 'typeorm';
 import { UserEntity } from '../domain/user.entity';
 import { UserMapper } from '../user.mapper';
+import { UserModel } from './user.model';
+import { UserRepositoryPort } from './user.repository.port';
 
 
 @Injectable()

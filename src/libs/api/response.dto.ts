@@ -1,3 +1,4 @@
+import { ResourceIdentifier } from "@libs/api/identifier.response.dto";
 
 export interface ResponseBaseProps {
     id: string;
@@ -5,20 +6,12 @@ export interface ResponseBaseProps {
     updatedAt: Date;
 }
 
-
-export class ResponseBase {
+export class ResponseBase extends ResourceIdentifier {
     constructor({ id, createdAt, updatedAt }: ResponseBaseProps) {
-        this.id = id;
+        super(id);
         this.createdAt = new Date(createdAt).toISOString();
         this.updatedAt = new Date(updatedAt).toISOString();
     }
-
-    /**
-     * Resource identifier.
-     * @example 'e4360762-61a9-458f-80fe-fcb762492efa'
-     */
-    readonly id: string;
-
 
     /** 
     * Resource creation date in ISO format.

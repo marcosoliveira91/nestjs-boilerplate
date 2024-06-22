@@ -1,4 +1,5 @@
-import { UserRepository } from "@modules/user/infra/user.repository";
+
+import { UserRepository } from "@modules/user/database/user.repository";
 import { USER_REPOSITORY } from "@modules/user/user.di-tokens";
 import { UserMapper } from "@modules/user/user.mapper";
 import { Logger, Module, Provider } from "@nestjs/common";

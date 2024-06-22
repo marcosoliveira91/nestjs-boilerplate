@@ -37,6 +37,6 @@ export interface RepositoryPort<Entity> {
      * Other shared repository methods can be added here
      * 
      * Example:
-     * findAllPaginated(params: PaginatedQueryParams): Promise<Paginated<Entity>>;
+     *      findAllPaginated(params: PaginatedQueryParams): Promise<Paginated<Entity>>;
      */
 }

@@ -23,7 +23,7 @@ export class UserRepository extends SqlRepositoryBase<UserEntity, UserModel> imp
   }
 
   async findOneByEmail(email: string): Promise<UserEntity | null> {
-    const user = await this.findById(email);
+    const user = await this.repository.findOneBy({ email });
     if (!user) return null;
 
     return this.mapper.toDomain(user);

@@ -1,4 +1,5 @@
-import { ExceptionBase, ExceptionCodes } from '@libs/exceptions';
+import { ExceptionBase } from '@libs/exceptions/exception.base';
+import { ExceptionCodes } from '@libs/exceptions/exception.codes';
 
 
 export class ArgumentInvalidException extends ExceptionBase {

@@ -1,5 +1,6 @@
 import { RequestContextService } from "@libs/context/request-context.service";
-import { DomainEvent, Entity } from "@libs/ddd";
+import { DomainEvent } from "@libs/ddd/domain-event.base";
+import { Entity } from "@libs/ddd/entity.base";
 import { LoggerPort } from "@libs/logger/logger.port";
 import { EventEmitter2 } from '@nestjs/event-emitter';
 

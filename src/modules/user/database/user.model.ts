@@ -6,7 +6,7 @@ import {
 } from 'typeorm';
 
 
-@Entity()
+@Entity("users")
 export class UserModel {
     @PrimaryColumn('uuid')
     id: string;
